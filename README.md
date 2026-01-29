@@ -1,56 +1,91 @@
 # Warium API
 
-**Warium API** is the official modding and integration API for **Warium** and **WariumVS**.
+⚠️ **In development / work in progress** ⚠️
 
-It provides a stable, Java-facing contract that allows third-party mods to integrate with Warium systems without depending on internal implementation details. The API is designed to support long-term compatibility, clean extension points, and data-driven integration.
+Warium API is a Java-facing modding API for **Warium** and **WariumVS**.
+It exposes stable contracts, registries, services, and Forge events so addon mods can integrate with existing Warium systems **without touching internal code**.
+
+This project is developed and maintained **by MC**, not by **Novum**.
+
+Because of this:
+- the API may **lag behind** changes in Warium/WariumVS
+- updates may require **manual review and adjustment**
+- the API surface is still being stabilised
+
+If you are just playing Warium, you **do not need this mod**.
+If you are writing an addon or integration, this is the correct dependency.
 
 ---
 
 ## What this is
 
-- A **stable modding API** for Warium and WariumVS  
-- A supported way to **add custom parts, materials, profiles, and behaviours**  
-- A safe integration layer for damage, ballistics, machines, and ship systems  
-- The foundation used by **Warium Integrations** (KubeJS support)
+- A lightweight **API mod** (`warium-api`)
+- A supported integration surface for Warium and WariumVS
+- Server-safe by default (no client-only code in the API)
+
+## What this is not
+
+- Not Warium or WariumVS
+- Not a gameplay/content mod
+- Not a bundle of optional integrations (CC, KubeJS, JEI, etc.)
+- Not a guarantee that every internal mechanic is exposed
 
 ---
 
-## What this is *not*
+## What the API allows you to do
 
-- ❌ The Warium mod itself  
-- ❌ A content mod (no blocks, items, or entities)  
-- ❌ A scripting-only API  
-- ❌ A physics engine or full simulator  
+### Armour & materials
+- Register `ArmorProfile`s
+- Bind profiles to items, blocks, or tags
+- Query resolved armour data
 
-If you are just playing Warium, you do **not** need this mod.  
-If you are writing an addon or integration, this is what you should depend on.
+### Ballistics & impacts
+- Register `ProjectileProfile`s
+- Bind them to projectile entities
+- Listen to `ProjectileImpactEvent`
+- Modify damage, penetration, and ricochet
+
+### Processing / machines
+- Query `ProcessRecipe`s
+- Listen to process lifecycle events
+
+### Vehicle control (WariumVS)
+- Access existing vehicle control nodes
+- Read current yaw / pitch / roll / throttle / landing gear state
+- Listen to control input and activation events
+
+### Wrench / tools (WariumVS)
+- Identify wrench-like tools
+- Listen to wrench use events
+- Cancel actions to block underlying behaviour
+
+### Missiles & bombs (Warium)
+- Register and query munition and warhead profiles
+- Listen to munition launch and detonation events
+- Cancel or suppress detonation
 
 ---
 
-## Supported mods
+## Known gaps & limitations
 
-- **Warium** – required at runtime  
-- **WariumVS** – optional (adds ship and vehicle integration hooks)
+These are intentionally not exposed yet:
 
-The API loads safely even if WariumVS is not installed.
+- No internal physics / penetration formulas
+- No client hooks (rendering, HUD, particles)
+- No mid-flight per-tick munition control
+- Vehicle API only reflects **existing WariumVS control blocks**
+- Tool API is event-first, not pipeline-based
+- No networking helpers
+- No binary compatibility guarantees yet
 
 ---
 
-## Installation
-
-### For players / modpacks
-You generally do **not** need to install this manually.  
-It is included automatically when required by addon mods or integrations.
-
-### For developers (Gradle)
+## Installation (developers)
 
 ```gradle
-repositories {
-    mavenCentral()
-    // add additional maven repositories here if required
-}
-
 dependencies {
-    compileOnly "com.yourgroup:warium-api:<version>"
-    runtimeOnly "com.yourgroup:warium:<version>"
+    compileOnly "com.wariumapi:warium-api:<api_version>"
+    runtimeOnly "com.wariumapi:warium:<warium_version>"
+    // optional:
+    // runtimeOnly "com.wariumapi:wariumvs:<wariumvs_version>"
 }

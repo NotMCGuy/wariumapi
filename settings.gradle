@@ -1,0 +1,47 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven {
+            name = 'MinecraftForge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            name = 'ValkyrienSkies'
+            url = 'https://maven.valkyrienskies.org/'
+        }
+        maven {
+            name = 'GeckoLib'
+            url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'MinecraftForge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            name = 'ValkyrienSkies'
+            url = 'https://maven.valkyrienskies.org/'
+        }
+        maven {
+            name = 'GeckoLib'
+            url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+    }
+}
+
+rootProject.name = 'warium-api'
+
+// By default, only build the API module. Add -PincludeMods=true to include all subprojects.
+if (providers.gradleProperty('includeMods').orNull == 'true') {
+    include 'warium', 'wariumvs', 'examplemod'
+}
