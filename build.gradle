@@ -25,6 +25,39 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }
 
+tasks.named('processResources', ProcessResources).configure {
+    inputs.property "version", project.version
+    inputs.properties(
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_authors: mod_authors,
+            mod_license: mod_license,
+            mod_description: mod_description
+    )
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand([
+                version: project.version,
+                mod_id: mod_id,
+                mod_name: mod_name,
+                mod_authors: mod_authors,
+                mod_license: mod_license,
+                mod_description: mod_description
+        ])
+    }
+}
+
+tasks.register('verifyModJar') {
+    dependsOn tasks.named('jar')
+    doLast {
+        def jarFile = tasks.named('jar').get().archiveFile.get().asFile
+        def zip = new java.util.zip.ZipFile(jarFile)
+        def entry = zip.getEntry('META-INF/mods.toml')
+        zip.close()
+        if (entry == null) throw new GradleException("Built jar is missing META-INF/mods.toml: " + jarFile)
+        println "OK: META-INF/mods.toml present in " + jarFile
+    }
+}
+
 jar {
     archiveBaseName.set('warium-api')
 }

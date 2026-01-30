@@ -43,5 +43,5 @@ rootProject.name = 'warium-api'
 
 // By default, only build the API module. Add -PincludeMods=true to include all subprojects.
 if (providers.gradleProperty('includeMods').orNull == 'true') {
-    include 'warium', 'wariumvs', 'examplemod'
+    include 'warium', 'wariumvs', 'warium-api-example-mod'
 }
