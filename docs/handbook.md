@@ -304,6 +304,7 @@ Do this:
 - Docs links checked.
 - Incident/perf guidance reflects current code.
 - No “TODO maybe later” in user-facing release notes.
+- Remind myself to actually update the Github...
 
 ---
 
