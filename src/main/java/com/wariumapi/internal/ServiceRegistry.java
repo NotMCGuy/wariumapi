@@ -1,9 +1,12 @@
 package com.wariumapi.internal;
 
+import com.wariumapi.aimer.AimerService;
 import com.wariumapi.armor.ArmorService;
 import com.wariumapi.ballistics.BallisticsService;
+import com.wariumapi.effects.ExplosionEffectsService;
 import com.wariumapi.process.ProcessService;
 import com.wariumapi.munitions.MunitionsService;
+import com.wariumapi.radar.RadarService;
 import com.wariumapi.tool.ToolService;
 import com.wariumapi.vehicle.VehicleService;
 import com.wariumapi.vs.VsService;
@@ -18,6 +21,9 @@ public final class ServiceRegistry {
     private static final ToolService NOOP_TOOLS = new NoopToolService();
     private static final VehicleService NOOP_VEHICLE = new NoopVehicleService();
     private static final VsService NOOP_VS = new NoopVsService();
+    private static final AimerService NOOP_AIMER = new NoopAimerService();
+    private static final RadarService NOOP_RADAR = new NoopRadarService();
+    private static final ExplosionEffectsService NOOP_EFFECTS = new NoopExplosionEffectsService();
 
     private static final AtomicReference<ArmorService> ARMOR = new AtomicReference<>(NOOP_ARMOR);
     private static final AtomicReference<BallisticsService> BALLISTICS = new AtomicReference<>(NOOP_BALLISTICS);
@@ -26,6 +32,9 @@ public final class ServiceRegistry {
     private static final AtomicReference<ToolService> TOOLS = new AtomicReference<>(NOOP_TOOLS);
     private static final AtomicReference<VehicleService> VEHICLE = new AtomicReference<>(NOOP_VEHICLE);
     private static final AtomicReference<VsService> VS = new AtomicReference<>(NOOP_VS);
+    private static final AtomicReference<AimerService> AIMER = new AtomicReference<>(NOOP_AIMER);
+    private static final AtomicReference<RadarService> RADAR = new AtomicReference<>(NOOP_RADAR);
+    private static final AtomicReference<ExplosionEffectsService> EFFECTS = new AtomicReference<>(NOOP_EFFECTS);
 
     private ServiceRegistry() {
     }
@@ -61,6 +70,21 @@ public final class ServiceRegistry {
     public static Optional<VsService> vs() {
         VsService service = VS.get();
         return service == NOOP_VS ? Optional.empty() : Optional.of(service);
+    }
+
+    public static Optional<AimerService> aimer() {
+        AimerService service = AIMER.get();
+        return service == NOOP_AIMER ? Optional.empty() : Optional.of(service);
+    }
+
+    public static Optional<RadarService> radar() {
+        RadarService service = RADAR.get();
+        return service == NOOP_RADAR ? Optional.empty() : Optional.of(service);
+    }
+
+    public static Optional<ExplosionEffectsService> effects() {
+        ExplosionEffectsService service = EFFECTS.get();
+        return service == NOOP_EFFECTS ? Optional.empty() : Optional.of(service);
     }
 
     public static void setArmorService(ArmorService service) {
@@ -102,6 +126,24 @@ public final class ServiceRegistry {
     public static void setVsService(VsService service) {
         if (service != null) {
             VS.set(service);
+        }
+    }
+
+    public static void setAimerService(AimerService service) {
+        if (service != null) {
+            AIMER.set(service);
+        }
+    }
+
+    public static void setRadarService(RadarService service) {
+        if (service != null) {
+            RADAR.set(service);
+        }
+    }
+
+    public static void setEffectsService(ExplosionEffectsService service) {
+        if (service != null) {
+            EFFECTS.set(service);
         }
     }
 }

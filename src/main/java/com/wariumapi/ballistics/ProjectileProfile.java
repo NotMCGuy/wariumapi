@@ -3,9 +3,7 @@ package com.wariumapi.ballistics;
 import java.util.Collections;
 import java.util.EnumSet;
 
-/**
- * Immutable projectile definition.
- */
+
 public record ProjectileProfile(
         double mass,
         double calibre,

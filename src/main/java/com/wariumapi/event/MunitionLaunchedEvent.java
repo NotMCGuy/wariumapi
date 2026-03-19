@@ -6,9 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Event;
 
-/**
- * Fired when a munition entity is launched/spawned.
- */
+
 public class MunitionLaunchedEvent extends Event {
     private final Level level;
     private final Entity entity;

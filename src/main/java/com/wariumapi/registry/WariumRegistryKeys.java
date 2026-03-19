@@ -10,9 +10,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * Registry keys for Warium API data types.
- */
+
 public final class WariumRegistryKeys {
     public static final ResourceKey<Registry<ArmorProfile>> ARMOR_PROFILES =
             ResourceKey.createRegistryKey(new ResourceLocation("warium", "armor_profiles"));

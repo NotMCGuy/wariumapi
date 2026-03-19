@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * Immutable armor material/profile definition used by Warium armor resolution.
- */
+
 public record ArmorProfile(
         double thickness,
         double hardness,

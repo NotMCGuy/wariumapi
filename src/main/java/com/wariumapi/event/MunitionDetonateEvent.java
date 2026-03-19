@@ -7,9 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
 
-/**
- * Fired when a munition detonates. Cancel to suppress the default detonation.
- */
+
 @Cancelable
 public class MunitionDetonateEvent extends Event {
     private final Level level;

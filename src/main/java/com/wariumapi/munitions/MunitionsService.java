@@ -11,9 +11,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-/**
- * Registry and query API for existing Warium missiles and bombs.
- */
+
 public interface MunitionsService {
     void registerWarhead(ResourceLocation id, WarheadProfile profile);
 

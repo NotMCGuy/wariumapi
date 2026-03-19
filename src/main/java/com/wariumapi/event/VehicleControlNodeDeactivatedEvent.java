@@ -6,9 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Event;
 
-/**
- * Fired when a vehicle control node is unlinked/deactivated.
- */
+
 public class VehicleControlNodeDeactivatedEvent extends Event {
     private final Level level;
     private final BlockPos nodePos;

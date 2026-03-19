@@ -6,9 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.Registries;
 
-/**
- * Warium API tag keys.
- */
+
 public final class WariumTagKeys {
     public static final class Items {
         public static final TagKey<Item> ARMOR_MATERIALS = tag("armor_materials");

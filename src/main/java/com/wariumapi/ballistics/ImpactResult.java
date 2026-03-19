@@ -1,8 +1,6 @@
 package com.wariumapi.ballistics;
 
-/**
- * Mutable impact result; listeners can adjust values before Warium applies them.
- */
+
 public final class ImpactResult {
     private boolean didPenetrate;
     private double penetrationDepth;

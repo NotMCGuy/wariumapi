@@ -4,9 +4,7 @@ import com.wariumapi.munitions.WarheadFlag;
 import java.util.EnumSet;
 import java.util.Map;
 
-/**
- * Immutable warhead definition mirroring Warium's existing warheads.
- */
+
 public record WarheadProfile(
         double explosiveMass,
         double blastRadiusScale,

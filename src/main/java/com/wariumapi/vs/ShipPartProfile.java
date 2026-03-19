@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * Immutable ship part profile for WariumVS integration.
- */
+
 public record ShipPartProfile(
         double mass,
         double buoyancy,

@@ -6,9 +6,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import net.minecraft.resources.ResourceLocation;
 
-/**
- * Immutable munition definition mirroring Warium's existing missiles and bombs.
- */
+
 public record MunitionProfile(
         MunitionKind kind,
         double mass,

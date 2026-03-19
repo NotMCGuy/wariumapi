@@ -10,9 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-/**
- * API for WariumVS ship integration. Implementation is present only when WariumVS is installed.
- */
+
 public interface VsService {
     void registerShipPart(ResourceLocation id, ShipPartProfile profile);
 

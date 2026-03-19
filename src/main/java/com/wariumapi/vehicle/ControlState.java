@@ -2,9 +2,7 @@ package com.wariumapi.vehicle;
 
 import java.util.EnumSet;
 
-/**
- * Immutable snapshot of current vehicle control inputs.
- */
+
 public record ControlState(
         float throttle,
         float yaw,

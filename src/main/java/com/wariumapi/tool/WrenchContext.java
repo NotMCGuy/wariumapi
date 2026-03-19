@@ -8,11 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-/**
- * Context for a wrench/tool interaction.
- *
- * <p>Some fields (face/hand) may be null when not available from the caller.</p>
- */
+
 public record WrenchContext(
         Level level,
         Player player,

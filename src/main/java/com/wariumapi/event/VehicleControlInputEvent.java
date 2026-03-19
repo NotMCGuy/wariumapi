@@ -6,9 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Event;
 
-/**
- * Fired after WariumVS applies control input to a vehicle control node.
- */
+
 public class VehicleControlInputEvent extends Event {
     private final Level level;
     private final BlockPos nodePos;
