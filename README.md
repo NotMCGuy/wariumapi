@@ -51,7 +51,7 @@ If you are writing an addon or integration, this is the correct dependency.
 
 ### Vehicle control (WariumVS)
 - Access existing vehicle control nodes
-- Read current yaw / pitch / roll / throttle / landing gear state
+- Read current yaw / pitch / roll / throttle / flap comparator (0-15) / landing gear state
 - Listen to control input and activation events
 
 ### Wrench / tools (WariumVS)

@@ -244,7 +244,9 @@ public final class PerformanceGuardHandlers {
         boolean nearZero = Math.abs(state.throttle()) <= wakeThreshold
                 && Math.abs(state.yaw()) <= wakeThreshold
                 && Math.abs(state.pitch()) <= wakeThreshold
-                && Math.abs(state.roll()) <= wakeThreshold;
+                && Math.abs(state.roll()) <= wakeThreshold
+                && !state.hasFlapInput()
+                && state.flags().isEmpty();
 
         IdleState current = CONTROLLER_IDLE_STATES.get(key);
         if (current == null) {
@@ -309,6 +311,9 @@ public final class PerformanceGuardHandlers {
         if (Math.abs(current.roll() - previous.roll()) > deadzone) {
             return false;
         }
+        if (current.flapComparator() != previous.flapComparator()) {
+            return false;
+        }
         return current.flags().equals(previous.flags());
     }
 
@@ -316,7 +321,14 @@ public final class PerformanceGuardHandlers {
         EnumSet<ControlFlag> flags = state.flags().isEmpty()
                 ? EnumSet.noneOf(ControlFlag.class)
                 : EnumSet.copyOf(state.flags());
-        return new ControlState(state.throttle(), state.yaw(), state.pitch(), state.roll(), flags);
+        return new ControlState(
+                state.throttle(),
+                state.yaw(),
+                state.pitch(),
+                state.roll(),
+                state.flapComparator(),
+                flags
+        );
     }
 
     private record NodeKey(ResourceKey<Level> dimension, BlockPos nodePos) {

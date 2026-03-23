@@ -14,8 +14,11 @@ public interface VehicleControlNode {
     
     Optional<UUID> getControllerId();
 
-    
     boolean isActive();
+
+    default int getComparatorValue() {
+        return isActive() ? 15 : 0;
+    }
 
     Optional<VehicleController> getVehicle();
 }

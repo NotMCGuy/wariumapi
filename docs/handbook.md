@@ -14,7 +14,7 @@ This handbook is for:
 ### 1.1 Dependencies
 ```groovy
 dependencies {
-    compileOnly "com.wariumapi:warium-api:1.0.5"
+    compileOnly "com.wariumapi:warium-api:1.0.6"
     runtimeOnly "com.wariumapi:warium:1.2.7"
     // optional runtime:
     // runtimeOnly "com.wariumapi:wariumvs:1.0.1"
@@ -298,7 +298,7 @@ Do this:
 
 ## 11) GitHub release prep checklist
 
-- Version updated (`1.0.5` here).
+- Version updated (`1.0.6` here).
 - Changelog entry added.
 - Contract changes documented in this handbook.
 - Docs links checked.
